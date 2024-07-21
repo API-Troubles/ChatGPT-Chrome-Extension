@@ -1,4 +1,4 @@
-async function callApi(text) 
+async function callApi() 
 {
   await fetch(getUrl(), {
     method: 'POST',
@@ -10,28 +10,21 @@ async function callApi(text)
     body: JSON.stringify(
       {'model': 'gpt-3.5-turbo',
         'messages': [
-          {'role': 'user','content': text}
+          {'role': 'user','content': document.getElementById("textArea").value}
         ],
       }
     )
   })
   .then(result => result.json())
   .then(response => {
-  console.log(response)
-  return response.choices[0].message.content
-  })
-}
 
-async function requestAPI() 
-{
-  let response = await callApi(document.getElementById("textArea").value);
-  console.log(response);
-  let node = document.createTextNode(response);
+  console.log(response)
+  let node = document.createTextNode(response.choices[0].message.content);
 
   document.getElementById("response").textContent = '';
   document.getElementById("response").appendChild(node);
+  })
 }
-
 
 function getUrl()
 {
