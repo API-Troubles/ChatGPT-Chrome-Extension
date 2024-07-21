@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <h1>Ask ChatGPT</h1>
+
+  <div>
+    <textarea></textarea><br>
+    <button>Ask ChatGPT</button><br>
+    <p id="response"></p>
+  </div>
+
+  <div>
+    <h2>Change API Token</h2>
+    <input type="text" id="keyInput">
+    <button onclick="saveKey()">Save Token</button><br>
+    <input type="checkbox" id="toggleApiUrl" name="toggleApiUrl" value="toggleApiUrl">
+    <label for="toggleApiUrl">Use the Arcade API instead</label><br>
+  </div>
+</body>
+
+</html>
