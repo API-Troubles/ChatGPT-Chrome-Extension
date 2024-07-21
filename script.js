@@ -1,6 +1,6 @@
-function callApi(text) 
+async function callApi(text) 
 {
-  fetch(getUrl(), {
+  await fetch(getUrl(), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -17,14 +17,15 @@ function callApi(text)
   })
   .then(result => result.json())
   .then(response => {
-  console.log(response);
+  console.log(response)
   return response.choices[0].message.content
   })
 }
 
-function requestAPI() 
+async function requestAPI() 
 {
-  let response = callApi(document.getElementById("textArea").value);
+  let response = await callApi(document.getElementById("textArea").value);
+  console.log(response);
   let node = document.createTextNode(response);
 
   document.getElementById("response").textContent = '';
