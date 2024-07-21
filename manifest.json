@@ -1,0 +1,11 @@
+{
+    "name": "ChatGPT Chrome Extension",
+    "version": "0.1.0",
+    "description": "ChatGPT Chrome Extension. Expect bugs for now. Created for the Arcade Hackathon!",
+    "manifest_version": 3,
+    "author": "Felix Gao",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Ask ChatGPT"
+    }
+}
