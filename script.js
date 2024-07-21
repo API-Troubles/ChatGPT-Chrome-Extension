@@ -1,6 +1,6 @@
 function callApi(text) 
 {
-  fetch('https://jamsapi.hackclub.dev/openai/chat/completions', {
+  fetch(getUrl(), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -17,9 +17,20 @@ function callApi(text)
   })
   .then(result => result.json())
   .then(response => {
+  console.log(response);
   return response.choices[0].message.content
   })
 }
+
+function requestAPI() 
+{
+  let response = callApi(document.getElementById("textArea").value);
+  let node = document.createTextNode(response);
+
+  document.getElementById("response").textContent = '';
+  document.getElementById("response").appendChild(node);
+}
+
 
 function getUrl()
 {
@@ -30,6 +41,7 @@ function getUrl()
   }
 }
 
+
 function saveKey()
 {
     key = document.getElementById('keyInput').value;
@@ -38,6 +50,7 @@ function saveKey()
         console.log("saved following apiKey: " + key);
     }
 }
+
 
 function saveKeyType() {
   var checkBox = document.getElementById("toggleApiUrl");
