@@ -10,7 +10,7 @@ async function callApi()
     body: JSON.stringify(
       {'model': 'gpt-3.5-turbo',
         'messages': [
-          {'role': 'assistant','content': "You are a helpful AI which should reply concisely. Avoid using markdown which affects text sizing, like #s, others you are free to use as needed."},
+          {'role': 'system','content': "You are a helpful AI which should reply concisely. Avoid using markdown which affects text sizing, like #s, others you are free to use as needed."},
           {'role': 'user','content': document.getElementById("textArea").value}
         ],
       }
