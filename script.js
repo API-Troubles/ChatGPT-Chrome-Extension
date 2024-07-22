@@ -67,7 +67,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById("toggle-btn").checked = false;
   }
 
-  document.getElementById("ask-btn").addEventListener("click", callApi());
-  document.getElementById("save-btn").addEventListener("click", saveKey());
-  document.getElementById("toggle-btn").addEventListener("click", saveKeyType());
+  document.getElementById("ask-btn").addEventListener("click", callApi);
+  document.getElementById("save-btn").addEventListener("click", saveKey);
+  document.getElementById("toggle-btn").addEventListener("click", saveKeyType);
+
 });
