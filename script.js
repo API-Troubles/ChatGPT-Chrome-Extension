@@ -10,6 +10,7 @@ async function callApi()
     body: JSON.stringify(
       {'model': 'gpt-3.5-turbo',
         'messages': [
+          {'role': 'assistant','content': "You are a helpful AI which should reply concisely. Avoid using markdown which affects text sizing, like #s, others you are free to use as needed."},
           {'role': 'user','content': document.getElementById("textArea").value}
         ],
       }
@@ -21,8 +22,12 @@ async function callApi()
   console.log(response)
   let node = document.createTextNode(response.choices[0].message.content);
 
+  var converter = new showdown.Converter(),
+    text      = response.choices[0].message.content,
+    html      = converter.makeHtml(text);
+
   document.getElementById("response").textContent = '';
-  document.getElementById("response").appendChild(node);
+  document.getElementById("response").appendChild(converter);
   })
 }
 
