@@ -47,7 +47,7 @@ function saveKey()
 
 
 function saveKeyType() {
-  var checkBox = document.getElementById("toggleApiUrl");
+  var checkBox = document.getElementById("toggle-btn");
 
   if (checkBox.checked) {
     console.log("Saved useArcadeApi: true");
@@ -62,8 +62,12 @@ function saveKeyType() {
 // Learned to wait until things load from my last project lol
 document.addEventListener("DOMContentLoaded", (event) => {
   if (localStorage.getItem('useArcadeApi') == "true") { // Why true as a string? idk thats just how it is
-    document.getElementById("toggleApiUrl").checked = true;
+    document.getElementById("toggle-btn").checked = true;
   } else {
-    document.getElementById("toggleApiUrl").checked = false;
+    document.getElementById("toggle-btn").checked = false;
   }
+
+  document.getElementById("ask-btn").addEventListener("click", callApi());
+  document.getElementById("save-btn").addEventListener("click", saveKey());
+  document.getElementById("toggle-btn").addEventListener("click", saveKeyType());
 });
