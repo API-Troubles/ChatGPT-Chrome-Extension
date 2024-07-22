@@ -20,21 +20,21 @@ async function callApi()
   .then(response => {
 
   console.log(response)
-  let node = document.createTextNode(response.choices[0].message.content);
+    
+  var converter = new showdown.Converter();
+  html = converter.makeHtml(response.choices[0].message.content);
 
-  var converter = new showdown.Converter(),
-    text      = response.choices[0].message.content,
-    html      = converter.makeHtml(text);
+  let node = document.createTextNode(html);
 
   document.getElementById("response").textContent = '';
-  document.getElementById("response").appendChild(converter);
+  document.getElementById("response").appendChild(node);
   })
 }
 
 function getUrl()
 {
   if (localStorage.getItem('useArcadeApi') == "true") { // Why true as a string? idk thats just how it is
-    return "https://jamsapi.hackclub.dev/openai/chat/completions"
+    return "https://jamsapi.hackclub.dev/openai/chat/completions" // Shoutout hack club :party:
   } else {
     return "https://api.openai.com/v1/chat/completions"
   }
