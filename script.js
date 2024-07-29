@@ -4,7 +4,9 @@ async function callApi()
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('apiKey')}`
+      'Authorization': `Bearer ${chrome.storage.local.get('apiKey', function(result) {
+        return result.apiKey;
+      })}`
     },
 
     body: JSON.stringify(
@@ -32,11 +34,13 @@ async function callApi()
 
 function getUrl()
 {
-  if (localStorage.getItem('useArcadeApi') == "true") { // Why true as a string? idk thats just how it is
-    return "https://jamsapi.hackclub.dev/openai/chat/completions" // Shoutout hack club :party:
-  } else {
-    return "https://api.openai.com/v1/chat/completions"
-  }
+  chrome.storage.local.get('useArcadeApi', function(result) {
+    if (result.useArcadeApi.useArcadeApi == "true") { // Why true as a string? idk thats just how it is
+      return "https://jamsapi.hackclub.dev/openai/chat/completions"
+    } else {
+      return "https://api.openai.com/v1/chat/completions"
+    }
+  });
 }
 
 function typeResponse(response_txt, index = 0)
@@ -55,7 +59,7 @@ function saveKey()
 {
     key = document.getElementById('keyInput').value;
     if (key != "") {
-        localStorage.setItem('apiKey', key); 
+        chrome.storage.local.set({apiKey: key}, function(result) { console.log('Value of key is:', result); });
         console.log("saved following apiKey: " + key);
     }
 }
@@ -66,21 +70,23 @@ function saveKeyType() {
 
   if (checkBox.checked) {
     console.log("Saved useArcadeApi: true");
-    localStorage.setItem('useArcadeApi', true);
+    chrome.storage.local.set({useArcadeApi: "true"}, function(result) { console.log('true?:', result); });
   } else {
     console.log("Saved useArcadeApi: false");
-    localStorage.setItem('useArcadeApi', false);
+    chrome.storage.local.set({useArcadeApi: "false"}, function(result) { console.log('false?:', result); });
   }
 }
 
 // Return user settings on load
 // Learned to wait until things load from my last project lol
 document.addEventListener("DOMContentLoaded", (event) => {
-  if (localStorage.getItem('useArcadeApi') == "true") { // Why true as a string? idk thats just how it is
-    document.getElementById("toggle-btn").checked = true;
-  } else {
-    document.getElementById("toggle-btn").checked = false;
-  }
+  chrome.storage.local.get('useArcadeApi', function(result) {
+    if (result.useArcadeApi == "true") { // Why true as a string? idk thats just how it is
+      document.getElementById("toggle-btn").checked = true;
+    } else {
+      document.getElementById("toggle-btn").checked = true;
+    }
+  });
 
   document.getElementById("ask-btn").addEventListener("click", callApi);
   document.getElementById("save-btn").addEventListener("click", saveKey);

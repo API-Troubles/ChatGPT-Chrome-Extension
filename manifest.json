@@ -8,7 +8,14 @@
         "default_popup": "index.html",
         "default_title": "Ask ChatGPT"
     },
+    "permissions": [
+        "storage"
+    ],
+    "host_permissions": [
+        "https://api.openai.com/v1/chat/completions",
+        "https://jamsapi.hackclub.dev/openai/chat/completions"
+    ],
     "content_security_policy": {
-        "extension_pages": "script-src 'self' https://cdn.jsdelivr.net;"
+        "extension_pages": "script-src 'self';"
       }
 }
