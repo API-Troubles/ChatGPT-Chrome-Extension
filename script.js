@@ -59,7 +59,7 @@ function saveKey()
 {
     key = document.getElementById('keyInput').value;
     if (key != "") {
-        chrome.storage.local.set({apiKey: key}, function(result) { console.log('Value of key is:', result); });
+        chrome.storage.local.set({"apiKey": String(key)}, function(result) { console.log('Value of key is:', result); });
         console.log("saved following apiKey: " + key);
     }
 }
@@ -70,10 +70,10 @@ function saveKeyType() {
 
   if (checkBox.checked) {
     console.log("Saved useArcadeApi: true");
-    chrome.storage.local.set({useArcadeApi: "true"}, function(result) { console.log('true?:', result); });
+    chrome.storage.local.set({"useArcadeApi": "true"}, function(result) { console.log('true?:', result); });
   } else {
     console.log("Saved useArcadeApi: false");
-    chrome.storage.local.set({useArcadeApi: "false"}, function(result) { console.log('false?:', result); });
+    chrome.storage.local.set({"useArcadeApi": "false"}, function(result) { console.log('false?:', result); });
   }
 }
 
