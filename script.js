@@ -20,14 +20,12 @@ async function callApi()
   .then(response => {
 
   console.log(response)
-    
-  var converter = new showdown.Converter();
-  html = converter.makeHtml(response.choices[0].message.content);
 
-  let node = document.createTextNode(html);
+  let response_txt = response.choices[0].message.content;
 
   document.getElementById("response").textContent = '';
-  document.getElementById("response").appendChild(node);
+
+  typeResponse(response.choices[0].message.content);
   })
 }
 
@@ -37,6 +35,17 @@ function getUrl()
     return "https://jamsapi.hackclub.dev/openai/chat/completions" // Shoutout hack club :party:
   } else {
     return "https://api.openai.com/v1/chat/completions"
+  }
+}
+
+function typeResponse(response_txt, index = 0)
+{
+  const container = document.getElementById('response');
+
+  if (index < response_txt.length) {
+      container.textContent += response_txt.charAt(index);
+      index++;
+      setTimeout(typeResponse, 50, response_txt, index);
   }
 }
 
