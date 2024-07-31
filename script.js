@@ -32,6 +32,7 @@ async function callApi()
   })
 }
 
+
 async function getUrl()
 {
   result = await chrome.storage.local.get('useArcadeApi');
