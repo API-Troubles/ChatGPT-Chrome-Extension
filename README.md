@@ -1,6 +1,6 @@
 # A ChatGPT Chrome Extension
 
-On my quest to create extensions not filled with bloat, ads, premium subscriptions, and bloat, I have made this!
+On my quest to create extensions not filled with bloat, ads, premium subscriptions, and (more) bloat, I have made this!
 
 ## Usage
 
