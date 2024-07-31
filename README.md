@@ -16,8 +16,8 @@ This project isn't done yet! Don't count on updates, but write an issue if you (
 
 ## What I want to get done:
 
-[] Show user errors (Wrong token, etc)
-[] Give ChatGPT the optional context of the site a user is on
-[] Save previous messages
+- [ ] Show user errors (Wrong token, etc)
+- [ ] Give ChatGPT the optional context of the site a user is on
+- [ ] Save previous messages
 
-[] Create an actual chrome extension page?
+- [ ] Create an actual chrome extension page?
