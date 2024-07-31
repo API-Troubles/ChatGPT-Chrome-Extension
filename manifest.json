@@ -11,10 +11,6 @@
     "permissions": [
         "storage"
     ],
-    "host_permissions": [
-        "https://api.openai.com/v1/chat/completions",
-        "https://jamsapi.hackclub.dev/openai/chat/completions"
-    ],
     "icons": {
         "255": "icon.png"
     },
